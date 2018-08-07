@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+  <!-- Form
+  ================================================== -->
+<div class="form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {% if result %}
+          {% if result[0]<=1 %}
+                <h2><span style="color:#FFCACA">結果！</span></h2>
+
+              <div class="col-md-12">
+                <img src={{result[1]}} >
+              </div>
+
+          {% endif %}
+
+          {% if result[0]==2 %}
+              {{result[1]}}
+          {% endif %}
+
+        {% else %}
+          <div class="col-md-12">
+            <h3><span class="green">顔写真をアップロードしてください！</span></h3>
+          </div>
+        {% endif %}
+        <div class="col-md-12" style="margin-top:10px; margin-bottom:20px;">
+          <form action="/post" method="post" class="form-inline" enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <button type="submit" class="btn btn-primary" style="margin-top:5px;">推定開始！</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
